@@ -1,4 +1,4 @@
-# FATES LUH2 data tool
+# FATES land use data processing tool
 
 A python tool for processing LUH2 data for use with FATES landuse run modes
 
