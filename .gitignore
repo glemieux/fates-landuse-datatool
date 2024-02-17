@@ -3,6 +3,10 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+# netcdf files - whitelist specific files
+*.nc
+!tests/resources/surfdata_4x5.nc
+
 # C extensions
 *.so
 
