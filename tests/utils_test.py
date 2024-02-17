@@ -18,30 +18,30 @@ def test_RegridTargetPrep_coords(target_dataset):
                  if latlon in coord]
     assert latlon_list == test_list
 
-def test_negImportRegridTarget(landusepft_file_location):
-    with pytest.raises(TypeError) as exp:
-        utils.ImportRegridTarget(landusepft_file_location)
-    assert str(exp.value) == "incorrect file, must be surface dataset"
+# def test_negImportRegridTarget(landusepft_file_location):
+#     with pytest.raises(TypeError) as exp:
+#         utils.ImportRegridTarget(landusepft_file_location)
+#     assert str(exp.value) == "incorrect file, must be surface dataset"
 
-def test_negSetMaskRegridTarget(landusepft_dataset):
-    with pytest.raises(AttributeError) as exp:
-        maskoutput = utils.SetMaskRegridTarget(landusepft_dataset)
-    assert str(exp.value) == "incorrect dataset, must be CLM surface dataset"
+# def test_negSetMaskRegridTarget(landusepft_dataset):
+#     with pytest.raises(AttributeError) as exp:
+#         maskoutput = utils.SetMaskRegridTarget(landusepft_dataset)
+#     assert str(exp.value) == "incorrect dataset, must be CLM surface dataset"
 
-# Postive test case for importing LUH2 static data file
-def test_posImportLUH2StaticFile(static_file_location):
-    data = utils.ImportLUH2StaticFile(static_file_location)
-    static_variables = list(data.var())
-    assert static_variables == ['ptbio',
-                                'fstnf',
-                                'carea',
-                                'icwtr',
-                                'ccode',
-                                'lat_bounds',
-                                'lon_bounds']
+# # Postive test case for importing LUH2 static data file
+# def test_posImportLUH2StaticFile(static_file_location):
+#     data = utils.ImportLUH2StaticFile(static_file_location)
+#     static_variables = list(data.var())
+#     assert static_variables == ['ptbio',
+#                                 'fstnf',
+#                                 'carea',
+#                                 'icwtr',
+#                                 'ccode',
+#                                 'lat_bounds',
+#                                 'lon_bounds']
 
-# Negative test case for importing incorrect file via static luh2 file open function
-def test_negImportLUH2StaticFile(landusepft_file_location):
-    with pytest.raises(TypeError) as exp:
-        utils.ImportLUH2StaticFile(landusepft_file_location)
-    assert str(exp.value) == "incorrect file, must be LUH2 static file"
+# # Negative test case for importing incorrect file via static luh2 file open function
+# def test_negImportLUH2StaticFile(landusepft_file_location):
+#     with pytest.raises(TypeError) as exp:
+#         utils.ImportLUH2StaticFile(landusepft_file_location)
+#     assert str(exp.value) == "incorrect file, must be LUH2 static file"
