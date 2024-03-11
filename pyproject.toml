@@ -27,6 +27,7 @@ dependencies = [
 
 [tool.unidep.optional_dependencies]
 test = ["pytest"]
+lint = ["flake8"]
 
 [tool.setuptools]
 package-dir = {"" = "src"}
