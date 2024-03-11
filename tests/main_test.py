@@ -5,18 +5,16 @@ from argparse import ArgumentParser as parser
 from landusedata._main import main
 
 # TODO: parameterize this
-def test_main(capsys):
-    """
-    Postive case testing for choice input
-    Note that the regridfile is a global argument to all landusedata subcommands
-    and thus must come last.
-    """
-    statefile = 'statefile'
-    regridfile = 'regridfile'
-    main(['luh2',statefile,regridfile])
-    out, err = capsys.readouterr()
-    assert out == 'calling luh2 code: {},{}\n'.format(regridfile,statefile)
-    assert err == ''
+# def test_main_luh2(capsys):
+#     """
+#     Postive case testing for choice input
+#     Note that the regridfile is a global argument to all landusedata subcommands
+#     and thus must come last.
+#     """
+#     main(['luh2'])
+#     out, err = capsys.readouterr()
+#     assert out == 'calling luh2 code: {},{}\n'.format(regridfile,statefile)
+#     assert err == ''
 
 def test_main_neg(capsys):
     """

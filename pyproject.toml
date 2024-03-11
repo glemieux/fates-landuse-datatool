@@ -36,3 +36,5 @@ addopts = [
     "--verbose",
     "--color=yes",
 ]
+[project.scripts]
+fates-landusedata = "landusedata._main:main"
