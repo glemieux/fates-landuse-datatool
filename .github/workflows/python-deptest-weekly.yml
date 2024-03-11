@@ -1,0 +1,34 @@
+name: Weekly dependency test with multiple python versions
+
+on:
+  schedule:
+    - cron: '30 23 * * SUN'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v4
+      with:
+        python-version: ${{ matrix.python-version }}
+    # show python version being tested
+    - name: Display Python version
+      run: python -c "import sys; print(sys.version)"
+    - name: Add conda to system path
+      run: |
+        # $CONDA is an environment variable pointing to the root of the miniconda directory
+        echo $CONDA/bin >> $GITHUB_PATH
+    - name: Install dependencies with unidep
+      run: |
+        conda install -c conda-forge unidep
+        unidep install pyproject.toml
+        unidep install .["test"]
+    - name: Test with pytest
+      run: |
+        pytest
