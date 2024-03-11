@@ -13,14 +13,20 @@ classifiers = [
     "Intended Audience :: Developers",
     "Topic :: Scientific/Engineering"
 ]
-dependencies = [
-    "xesmf",
-    "netcdf4",
-]
 
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[tool.unidep]
+channels = ["conda-forge"]
+dependencies = [
+    {conda = "xesmf"},
+    "netcdf4"
+]
+
+[tool.unidep.optional_dependencies]
+test = ["pytest"]
 
 [tool.setuptools]
 package-dir = {"" = "src"}
