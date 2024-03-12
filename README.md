@@ -29,38 +29,38 @@ conda create -n <new-env-name> ngeetropics::tools-fates-landusedata
 
 This tool is meant to be utilized from the command line.  The top level call for the command line with help is shown below:
 ``` sh
-$ fates-landusedata -h                                                                                                                                   
-usage: fates-landusedata [-h] {luh2,lupft} ...                                                                                                                                                
-                                                                                                                                                                                              
-FATES landuse data tool                                                                                                                                                                       
-                                                                                                                                                                                              
-options:                                                                                                                                                                                      
-  -h, --help    show this help message and exit                                                                                                                                               
-                                                                                                                                                                                              
-subcommands:                                                                                                                                                                                  
-  {luh2,lupft}  landuse data tool subcommand options                                                                                                                                          
-    luh2        generate landuse harmonization timeseries data output                                                                                                                         
-    lupft       generate landuse x pft static data map output   
+$ fates-landusedata -h
+usage: fates-landusedata [-h] {luh2,lupft} ...
+
+FATES landuse data tool
+
+options:
+  -h, --help    show this help message and exit
+
+subcommands:
+  {luh2,lupft}  landuse data tool subcommand options
+    luh2        generate landuse harmonization timeseries data output
+    lupft       generate landuse x pft static data map output
 ```
 
 The `luh2` subcommand call tells the tool to build the combined landuse timeseries data:
 
 ``` sh
 $ fates-landusedata luh2 -h
-usage: luh2 [-h] [-w REGRIDDER_WEIGHTS] [-b BEGIN] [-e END] [-o OUTPUT] regrid_target_file luh2_static_file luh2_states_file luh2_transitions_file luh2_management_file                       
-                                                                                                                                                                                              
-positional arguments:                                                                                                                                                                         
-  regrid_target_file    target surface data file with desired grid resolution                                                                                                                 
-  luh2_static_file      luh2 static data file                                                                                                                                                 
-  luh2_states_file      full path of luh2 raw states file                                                                                                                                     
-  luh2_transitions_file                                                                                                                                                                       
-                        full path of luh2 raw transitions file                                                                                                                                
-  luh2_management_file  full path of luh2 raw management file                                                                                                                                 
-                                                                                                                                                                                              
-options:                                                                                                                                                                                      
-  -h, --help            show this help message and exit                                                                                                                                       
-  -w REGRIDDER_WEIGHTS, --regridder_weights REGRIDDER_WEIGHTS                                                                                                                                 
-                        filename of regridder weights to save                                                                                                                                 
+usage: luh2 [-h] [-w REGRIDDER_WEIGHTS] [-b BEGIN] [-e END] [-o OUTPUT] regrid_target_file luh2_static_file luh2_states_file luh2_transitions_file luh2_management_file
+
+positional arguments:
+  regrid_target_file    target surface data file with desired grid resolution
+  luh2_static_file      luh2 static data file
+  luh2_states_file      full path of luh2 raw states file
+  luh2_transitions_file
+                        full path of luh2 raw transitions file
+  luh2_management_file  full path of luh2 raw management file
+
+options:
+  -h, --help            show this help message and exit
+  -w REGRIDDER_WEIGHTS, --regridder_weights REGRIDDER_WEIGHTS
+                        filename of regridder weights to save
   -b BEGIN, --begin BEGIN
                         beginning of date range of interest
   -e END, --end END     ending of date range to slice
