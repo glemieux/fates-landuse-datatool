@@ -23,6 +23,7 @@ jobs:
           channels: conda-forge
           channel-priority: flexible
           show-channel-urls: true
+      - name: Display conda info
         run: |
           conda info
           conda list
