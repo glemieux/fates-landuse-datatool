@@ -13,15 +13,11 @@ classifiers = [
     "Intended Audience :: Developers",
     "Topic :: Scientific/Engineering"
 ]
-dynamics = ["dependencies"]
+dynamics = ["dependencies","optional-dependencies"]
 
 [project.readme]
 file = "README.md"
 content-type = "text/markdown"
-
-[project.optional-dependencies]
-test = ["pytest", "xarray", "numpy"]
-lint = ["flake8"]
 
 [build-system]
 requires = ["setuptools", "setuptools-scm"]
@@ -35,6 +31,7 @@ where = ["src"]
 
 [tool.setuptools.dynamic]
 dependencies = {file = ["requirements.txt"]}
+optional-dependencies = {dev = { file = ["requirements-test.txt"] }}
 
 [tool.pytest.ini_options]
 pythonpath = "src"
