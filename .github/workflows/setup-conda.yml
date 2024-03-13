@@ -37,3 +37,5 @@ jobs:
         run: |
           conda env update --file environment.yml --name test
           rm environment.yml
+      - name: Run tests
+        run: pytest
