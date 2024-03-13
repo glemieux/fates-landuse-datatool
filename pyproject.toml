@@ -13,10 +13,7 @@ classifiers = [
     "Intended Audience :: Developers",
     "Topic :: Scientific/Engineering"
 ]
-dependencies = [
-    "xesmf",
-    "netcdf4",
-]
+dynamics = ["dependencies"]
 
 [project.readme]
 file = "README.md"
@@ -35,6 +32,9 @@ package-dir = {"" = "src"}
 
 [tool.setuptools.packages.find]
 where = ["src"]
+
+[tool.setuptools.dynamic]
+dependencies = {file = ["requirements.txt"]}
 
 [tool.pytest.ini_options]
 pythonpath = "src"
