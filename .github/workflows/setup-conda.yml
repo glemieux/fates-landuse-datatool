@@ -1,0 +1,28 @@
+name: miniconda setup
+
+on:
+  workflow_dispatch:
+
+jobs:
+  setup-conda:
+    runs-on: "ubuntu-latest"
+    strategy:
+      matrix:
+        python-version: ["3.8"]
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: conda-incubator/setup-miniconda@v3
+        with:
+          activate-environment: test
+          python-version: ${{ matrix.python-version }}
+          channels: conda-forge
+          channel-priority: flexible
+          show-channel-urls: true
+      - run: |
+          conda info
+          conda list
+          conda config --show-sources
+          conda config --show
