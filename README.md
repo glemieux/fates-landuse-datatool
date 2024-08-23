@@ -32,7 +32,7 @@ _Supporting Files_
 
 The documenatation for the historical datasets is [available for download as a PDF](https://luh.umd.edu/LUH2/LUH2_v2h_README.pdf).
 
-### CESM THESIS datasets
+### CLM5 THESIS datasets
 
 Generating the land use x pft static mapping dataset requires as input the CLM 5 land use data tool 1/4 degree ouput datasets which can be downloaded via the [UCAR Geoscience Data Exchange](https://gdex.ucar.edu/dataset/188b_oleson/file.html):
 
