@@ -26,6 +26,7 @@ _Historical Files_
 - [states](https://luh.umd.edu/LUH2/LUH2_v2h/states.nc)
 - [transitions](https://luh.umd.edu/LUH2/LUH2_v2h/transitions.nc)
 - [management](https://luh.umd.edu/LUH2/LUH2_v2h/management.nc)
+
 _Supporting Files_
 - [static data](https://luh.umd.edu/LUH2/LUH2_v2h/staticData_quarterdeg.nc)
 
@@ -48,8 +49,8 @@ The LUH2 static data file noted in the LUH2 historical dataset section above is 
 
 This python package depends upon the following packages (which can be found in the pyproject.toml): 
 
-- [`xesmf`](https://pangeo-xesmf.readthedocs.io/en/latest/index.html#): regridding package
-- `netcdf4`
+- [`xesmf`](https://pangeo-xesmf.readthedocs.io/en/latest/index.html#): provides regridding capability
+- `netcdf4`: requirement for writing `.nc` files and necessary for `xesmf` dependencies 
 
 Note that `xesmf` relies on `esmpy` which is currently not available via PyPi (and thus not `pip` installabele).  See `esmf` issue [#256](https://github.com/esmf-org/esmf/issues/256) for discussion on this subject.  The [`xesmf` installation documentation](https://pangeo-xesmf.readthedocs.io/en/latest/installation.html#notes-about-esmpy) also provides some discussion of the issue.
 
@@ -72,7 +73,7 @@ conda create -n <new-env-name> ngeetropics::tools-fates-landusedata
 
 ### From source
 
-It is possible to use this tool without installing it using conda by obtaining the source files.  Note that this assumes that a conda environment has been created with the necessary dependencies as listed in the `pyproject.toml` manifest.  The source code for this repository is available as a submodule of the fates repository and can be found in the `fates/tools` directory.  To run the tool from source with `conda run`:
+It is possible to use this tool without installing it using conda by obtaining the source files.  Note that this assumes that a conda environment has been created with the necessary dependencies as listed in the [`pyproject.toml`](https://github.com/NGEET/tools-fates-landusedata/pull/14) manifest.  The source code for this repository is available as a submodule of the fates repository and can be found in the `fates/tools` directory.  To run the tool from source with `conda run`:
 
 Change directory to `fates/tools/landusedata/src/` and run:
 
