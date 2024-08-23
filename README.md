@@ -12,8 +12,6 @@ This tool creates the necessary land use datasets to be used as inputs for runni
 The tools provides these data sets as netcdf files by concatenating the various raw input data sets into a single file.  The tool provides the ability to regrid the source data resolution to a target
 resolution that the user designates for either output option.  The output data is then usable by FATES, mediated through a host land model (currently either CTSM or E3SM).
 
-takes the raw  data files as
-
 ## Input data sources
 
 The tool requires input data from two primary sources: the [Land Use Harmonization](https://luh.umd.edu/), or LUH2, historical data sets and the [THESIS Tools Datasetes](https://doi.org/10.5065/29s7-7b41).  A static mapping file from the LUH2 data is required for both output options.  The historical LUH2 transient, state, and management data is used as input for the FATES land use timeseries data output option, whereas the THEMIS tools forest, pasture, "other" and current surface data sets are necessary for the land use x pft static map output option.  These data sets can be downloaded directly from their respective sources and are not provided as part of this package.
