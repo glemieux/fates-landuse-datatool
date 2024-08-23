@@ -36,7 +36,7 @@ def RegridLoop(ds_to_regrid, regridder):
     ds_varnames = list(ds_to_regrid.variables.keys())
     varlen = len(ds_to_regrid.variables)
     first_var = False
-    for i in range(varlen-1):
+    for i in range(varlen):
 
         # Skip time variable
         if (not "time" in ds_varnames[i]):
