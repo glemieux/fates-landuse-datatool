@@ -35,7 +35,7 @@ def RegridLoop(ds_to_regrid, regridder):
     # Loop through the variables one at a time to conserve memory
     ds_varnames = list(ds_to_regrid.variables.keys())
     varlen = len(ds_to_regrid.variables)
-    first_var = False
+    first_var = True
     for i, var in enumerate(ds_to_regrid):
 
         # Skip time variable and only regrid variables that match the lat/lon shape.
@@ -50,10 +50,10 @@ def RegridLoop(ds_to_regrid, regridder):
 
         # For the first non-coordinate variable, copy and regrid the dataset as a whole.
         # This makes sure to correctly include the lat/lon in the regridding.
-        if (not(first_var)):
+        if first_var:
             ds_regrid = ds_to_regrid[var].to_dataset() # convert data array to dataset
             ds_regrid = regridder(ds_regrid)
-            first_var = True
+            first_var = False
 
         # Once the first variable has been included, then we can regrid by variable
         else:
