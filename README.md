@@ -20,7 +20,9 @@ The tool requires input data from two primary sources: the [Land Use Harmonizati
 
 ## Installation
 
-This package is available through the [ngeetropics anaconda channel](https://anaconda.org/ngeetropics/tools-fates-landusedata):
+### Conda install
+
+This package is available through the [ngeetropics anaconda channel](https://anaconda.org/ngeetropics/tools-fates-landusedata).  Note that the package is not available through PyPi as the `xesmf` dependency is only available through conda.
 
 To install in an existing environment:
 ``` sh
@@ -34,6 +36,18 @@ conda create -n <new-env-name> ngeetropics::tools-fates-landusedata
 ```
 
 ## Usage
+
+### From source
+
+It is possible to use this tool without installing it using conda by obtaining the source files.  This repository is a submodule of the fates repository and can be found in the `fates/tools` directory.  To run the tool from source:
+
+Change directory to `fates/tools/landusedata/src/` and run:
+
+``` sh
+conda run -n <conda-env> python -m landusedata <subcommand> <positional-args>
+```
+
+### Via Conda
 
 This tool is meant to be utilized from the command line.  The top level call for the command line with help is shown below:
 ``` sh
