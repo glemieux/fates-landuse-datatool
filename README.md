@@ -39,7 +39,7 @@ conda create -n <new-env-name> ngeetropics::tools-fates-landusedata
 
 ### From source
 
-It is possible to use this tool without installing it using conda by obtaining the source files.  This repository is a submodule of the fates repository and can be found in the `fates/tools` directory.  To run the tool from source:
+It is possible to use this tool without installing it using conda by obtaining the source files.  Note that this assumes that a conda environment has been created with the necessary dependencies as listed in the `pyproject.toml` manifest.  The source code for this repository is available as a submodule of the fates repository and can be found in the `fates/tools` directory.  To run the tool from source with `conda run`:
 
 Change directory to `fates/tools/landusedata/src/` and run:
 
