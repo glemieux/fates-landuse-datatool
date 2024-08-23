@@ -36,29 +36,29 @@ def RegridLoop(ds_to_regrid, regridder):
     ds_varnames = list(ds_to_regrid.variables.keys())
     varlen = len(ds_to_regrid.variables)
     first_var = False
-    for i in range(varlen):
+    for i, var in enumerate(ds_to_regrid):
 
         # Skip time variable
-        if (not "time" in ds_varnames[i]):
+        if (not "time" in var):
 
             # Only regrid variables that match the lat/lon shape.
-            if (ds_to_regrid[ds_varnames[i]][0].shape == (ds_to_regrid.lat.shape[0], ds_to_regrid.lon.shape[0])):
-                print("regridding variable {}/{}: {}".format(i+1, varlen, ds_varnames[i]))
+            if (ds_to_regrid[var][0].shape == (ds_to_regrid.lat.shape[0], ds_to_regrid.lon.shape[0])):
+                print("regridding variable {}/{}: {}".format(i+1, varlen, var))
 
                 # For the first non-coordinate variable, copy and regrid the dataset as a whole.
                 # This makes sure to correctly include the lat/lon in the regridding.
                 if (not(first_var)):
-                    ds_regrid = ds_to_regrid[ds_varnames[i]].to_dataset() # convert data array to dataset
+                    ds_regrid = ds_to_regrid[var].to_dataset() # convert data array to dataset
                     ds_regrid = regridder(ds_regrid)
                     first_var = True
 
                 # Once the first variable has been included, then we can regrid by variable
                 else:
-                    ds_regrid[ds_varnames[i]] = regridder(ds_to_regrid[ds_varnames[i]])
+                    ds_regrid[var] = regridder(ds_to_regrid[var])
             else:
-                print("skipping variable {}/{}: {}".format(i+1, varlen, ds_varnames[i]))
+                print("skipping variable {}/{}: {}".format(i+1, varlen, var))
         else:
-            print("skipping variable {}/{}: {}".format(i+1, varlen, ds_varnames[i]))
+            print("skipping variable {}/{}: {}".format(i+1, varlen, var))
 
     print("\n")
     return(ds_regrid)
