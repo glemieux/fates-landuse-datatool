@@ -136,7 +136,7 @@ options:
 It is possible to use this tool without installing it using conda by obtaining the source package.  Note that this assumes that a conda environment has been created with the necessary dependencies as listed in the [`pyproject.toml`](https://github.com/NGEET/tools-fates-landusedata/pull/14) manifest.  The source code for this repository is available as a submodule of the fates repository and can be found in the `fates/tools` directory.  To run the tool from source :
 
 1. Change directory to `fates/tools/landusedata/src/`.
-2. Run via `python -m`.  If you're conda environment is already active:
+2. Run via `python -m` within an active conda environment:
 
 ``` sh
 python -m landusedata <subcommand> <positional-args>
