@@ -69,17 +69,24 @@ conda create -n <new-env-name> ngeetropics::tools-fates-landusedata
 
 ## Usage
 
-### From source
+### From source (i.e. without conda install)
 
-It is possible to use this tool without installing it using conda by obtaining the source files.  Note that this assumes that a conda environment has been created with the necessary dependencies as listed in the [`pyproject.toml`](https://github.com/NGEET/tools-fates-landusedata/pull/14) manifest.  The source code for this repository is available as a submodule of the fates repository and can be found in the `fates/tools` directory.  To run the tool from source with `conda run`:
+It is possible to use this tool without installing it using conda by obtaining the source package.  Note that this assumes that a conda environment has been created with the necessary dependencies as listed in the [`pyproject.toml`](https://github.com/NGEET/tools-fates-landusedata/pull/14) manifest.  The source code for this repository is available as a submodule of the fates repository and can be found in the `fates/tools` directory.  To run the tool from source :
 
-Change directory to `fates/tools/landusedata/src/` and run:
+1. Change directory to `fates/tools/landusedata/src/`.
+2. Run via `python -m`.  If you're conda environment is already active:
+
+``` sh
+python -m landusedata <subcommand> <positional-args>
+```
+
+Note you can also run this command via `conda run` without having to enter the conda environment interactively:
 
 ``` sh
 conda run -n <conda-env> python -m landusedata <subcommand> <positional-args>
 ```
 
-### Via Conda
+### 
 
 This tool is meant to be utilized from the command line.  The top level call for the command line with help is shown below:
 ``` sh
