@@ -74,8 +74,9 @@ def main(args):
             regrid_luh2["LATIXY"] = ds_regrid_target["LATIXY"] # TO DO: double check if this is strictly necessary
 
         # Rename the dimensions for the output.  This needs to happen after the "LONGXY/LATIXY" assignment
+        # and should not touch the respective coordinate variables (hence rename_dims instead of rename).
         if (not 'lsmlat' in list(regrid_luh2.dims)):
-            regrid_luh2 = regrid_luh2.rename({'lat':'lsmlat','lon':'lsmlon'})
+            regrid_luh2 = regrid_luh2.rename_dims({'lat':'lsmlat','lon':'lsmlon'})
 
         # Reapply the coordinate attributes.  This is a workaround for an xarray bug (#8047)
         # Currently only need time
