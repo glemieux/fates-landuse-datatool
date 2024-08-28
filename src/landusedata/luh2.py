@@ -75,7 +75,7 @@ def main(args):
 
         # Rename the dimensions for the output.  This needs to happen after the "LONGXY/LATIXY" assignment
         if (not 'lsmlat' in list(regrid_luh2.dims)):
-            regrid_luh2 = regrid_luh2.rename_dims({'lat':'lsmlat','lon':'lsmlon'})
+            regrid_luh2 = regrid_luh2.rename({'lat':'lsmlat','lon':'lsmlon'})
 
         # Reapply the coordinate attributes.  This is a workaround for an xarray bug (#8047)
         # Currently only need time
