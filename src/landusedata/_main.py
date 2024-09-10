@@ -91,6 +91,11 @@ def main(argv=None):
     if os.path.exists(args.output) and not args.overwrite:
         raise FileExistsError(f"Output file exists; specify --overwrite to overwrite: {args.output}")
 
+    # Create output directory, if needed.
+    output_directory = os.path.dirname(args.output)
+    if not os.path.exists(output_directory):
+        os.makedirs(output_directory)
+
     # Call the default function for the given subcommand
     args.func(args)
 
