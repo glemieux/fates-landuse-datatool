@@ -3,6 +3,17 @@ import argparse
 from landusedata.luh2 import main as luh2main
 from landusedata.landusepft import main as lupftmain
 
+def _shared_arguments(parser):
+    parser.add_argument(
+        'regrid_target_file',
+        help='target surface data file with desired grid resolution',
+    )
+    parser.add_argument(
+        'luh2_static_file',
+        help='luh2 static data file',
+    )
+    return parser
+
 def main(argv=None):
 
     # Define top level parser
@@ -23,11 +34,11 @@ def main(argv=None):
     luh2_parser.set_defaults(func=luh2main)
     lupft_parser.set_defaults(func=lupftmain)
 
+    # Shared arguments
+    luh2_parser = _shared_arguments(luh2_parser)
+    lupft_parser = _shared_arguments(lupft_parser)
+
     # LUH2 subparser arguments
-    luh2_parser.add_argument('regrid_target_file',
-                             help='target surface data file with desired grid resolution')
-    luh2_parser.add_argument("luh2_static_file",
-                             help = "luh2 static data file")
     luh2_parser.add_argument('luh2_states_file',
                              help = "full path of luh2 raw states file")
     luh2_parser.add_argument('luh2_transitions_file',
@@ -50,10 +61,6 @@ def main(argv=None):
                              help = "output filename")
 
     # Landuse x pft subparser arguments
-    lupft_parser.add_argument('regrid_target_file',
-                             help='target surface data file with desired grid resolution')
-    lupft_parser.add_argument('luh2_static_file',
-                             help = "luh2 static data file")
     lupft_parser.add_argument('clm_luhforest_file',
                               help = "CLM5_current_luhforest_deg025.nc")
     lupft_parser.add_argument('clm_luhpasture_file',
