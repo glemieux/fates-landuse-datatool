@@ -88,6 +88,7 @@ def main(argv=None):
     args = parser.parse_args(argv)
 
     # Only overwrite existing output if --overwrite specified
+    args.output = os.path.realpath(args.output)
     if os.path.exists(args.output) and not args.overwrite:
         raise FileExistsError(f"Output file exists; specify --overwrite to overwrite: {args.output}")
 
