@@ -91,10 +91,12 @@ def main(argv=None):
     if os.path.exists(args.output) and not args.overwrite:
         raise FileExistsError(f"Output file exists; specify --overwrite to overwrite: {args.output}")
 
-    # Create output directory, if needed.
+    # Create output directory, if needed. Otherwise, check write access.
     output_directory = os.path.dirname(args.output)
     if not os.path.exists(output_directory):
         os.makedirs(output_directory)
+    elif not os.access(output_directory, os.W_OK):
+        raise PermissionError("No write permissions in " + output_directory)
 
     # Call the default function for the given subcommand
     args.func(args)
