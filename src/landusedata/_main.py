@@ -1,4 +1,5 @@
 import argparse
+import os
 
 from landusedata.luh2 import main as luh2main
 from landusedata.landusepft import main as lupftmain
@@ -11,6 +12,11 @@ def _shared_arguments(parser):
     parser.add_argument(
         'luh2_static_file',
         help='luh2 static data file',
+    )
+    parser.add_argument(
+        '--overwrite',
+        action='store_true',
+        help='overwrite existing output file, if it exists',
     )
     parser.add_argument(
         '-t', '--test',
@@ -80,6 +86,10 @@ def main(argv=None):
 
     # Parse the arguments
     args = parser.parse_args(argv)
+
+    # Only overwrite existing output if --overwrite specified
+    if os.path.exists(args.output) and not args.overwrite:
+        raise FileExistsError(f"Output file exists; specify --overwrite to overwrite: {args.output}")
 
     # Call the default function for the given subcommand
     args.func(args)
