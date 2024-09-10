@@ -12,6 +12,11 @@ def _shared_arguments(parser):
         'luh2_static_file',
         help='luh2 static data file',
     )
+    parser.add_argument(
+        '-t', '--test',
+        action='store_true',
+        help='test mode: only regrid one variable',
+    )
     return parser
 
 def main(argv=None):

@@ -1,12 +1,12 @@
 import xesmf as xe
 
-def RegridConservative(ds_to_regrid, ds_regrid_target, regridder_weights, regrid_reuse):
+def RegridConservative(ds_to_regrid, ds_regrid_target, regridder_weights, regrid_reuse, test):
 
     # define the regridder transformation
     regridder = GenerateRegridder(ds_to_regrid, ds_regrid_target, regridder_weights, regrid_reuse)
 
     # Loop through the variables to regrid
-    ds_regrid = RegridLoop(ds_to_regrid, regridder)
+    ds_regrid = RegridLoop(ds_to_regrid, regridder, test)
 
     return (ds_regrid, regridder)
 
@@ -27,7 +27,7 @@ def GenerateRegridder(ds_to_regrid, ds_regrid_target, regridder_weights_file, re
 
     return(regridder)
 
-def RegridLoop(ds_to_regrid, regridder):
+def RegridLoop(ds_to_regrid, regridder, test):
 
     # To Do: implement this with dask
     print("\nRegridding")
@@ -59,5 +59,10 @@ def RegridLoop(ds_to_regrid, regridder):
         # Once the first variable has been included, then we can regrid by variable
         else:
             ds_regrid[var] = regridder(ds_to_regrid[var])
+
+        # Stop regridding if in test mode
+        if test:
+            print("-t/--test specified, so stopping here")
+            break
 
     return(ds_regrid)

@@ -50,7 +50,8 @@ def main(args):
         # Regrid the luh2 data to the target grid
         # TO DO: provide a check for the save argument based on the input arguments
         regrid_luh2,regridder_luh2 = RegridConservative(dataset, ds_regrid_target,
-                                                        args.regridder_weights, regrid_reuse)
+                                                        args.regridder_weights, regrid_reuse,
+                                                        args.test)
 
         # Regrid the inverted ice/water fraction data to the target grid
         regrid_land_fraction = regridder_luh2(ds_luh2_static)
@@ -60,7 +61,8 @@ def main(args):
         regrid_luh2 = regrid_luh2 / regrid_land_fraction.landfrac
 
         # Correct the state sum (checks if argument passed is state file in the function)
-        regrid_luh2 = CorrectStateSum(regrid_luh2)
+        if not args.test:
+            regrid_luh2 = CorrectStateSum(regrid_luh2)
 
         # Add additional required variables for the host land model
         # Add 'YEAR' as a variable.
@@ -95,6 +97,10 @@ def main(args):
         # the previously generated weights file is reused
         if (not(regrid_reuse)):
             regrid_reuse = True
+
+        # Only process one dataset if in test mode
+        if args.test:
+            break
 
     # Write the files
     # TO DO: add check to handle if the user enters the full path
