@@ -82,6 +82,6 @@ def main(argv=None):
     # Return successful completion
     return 0
 
-# Gaurd against import time side effects
+# Guard against import time side effects
 if __name__ == '__main__':
     raise SystemExit(main())
