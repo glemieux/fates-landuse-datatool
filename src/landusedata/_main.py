@@ -18,11 +18,6 @@ def _shared_arguments(parser):
         action='store_true',
         help='overwrite existing output file, if it exists',
     )
-    parser.add_argument(
-        '-t', '--test',
-        action='store_true',
-        help='test mode: only regrid one variable',
-    )
     return parser
 
 def main(argv=None):
